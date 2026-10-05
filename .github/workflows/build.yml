@@ -1,0 +1,52 @@
+name: Build SpawnerVault
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Extract source project
+        run: |
+          unzip -o SpawnerVault-v4-source.zip -d source
+
+      - name: Find Gradle project
+        run: |
+          PROJECT_DIR=$(find source -name "build.gradle.kts" -print -quit | xargs dirname)
+          echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
+          echo "Found project at: $PROJECT_DIR"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14'
+
+      - name: Build SpawnerVault
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: gradle clean build --no-daemon
+
+      - name: Find JAR
+        run: |
+          echo "Built JAR files:"
+          find "${{ env.PROJECT_DIR }}/build/libs" -type f -name "*.jar" -print
+
+      - name: Upload SpawnerVault JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: SpawnerVault-JAR
+          path: ${{ env.PROJECT_DIR }}/build/libs/*.jar
+          if-no-files-found: error
