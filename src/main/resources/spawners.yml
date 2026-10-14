@@ -1,0 +1,16 @@
+# Production uses vanilla-style loot tables implemented by SpawnerStack.
+# This file controls cooldown multipliers only; loot prices live in prices.yml.
+ZOMBIE:
+  production-multiplier: 1.0
+SKELETON:
+  production-multiplier: 1.0
+SPIDER:
+  production-multiplier: 1.0
+CAVE_SPIDER:
+  production-multiplier: 1.0
+SILVERFISH:
+  production-multiplier: 1.0
+BLAZE:
+  production-multiplier: 1.0
+MAGMA_CUBE:
+  production-multiplier: 1.0

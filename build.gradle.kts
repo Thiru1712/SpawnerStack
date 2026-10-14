@@ -1,0 +1,25 @@
+plugins { java }
+group = "com.spawnervault"
+version = "1.2.0"
+
+repositories {
+    maven {
+        name = "papermc"
+        url = uri("https://repo.papermc.io/repository/maven-public/")
+    }
+    maven {
+        name = "jitpack"
+        url = uri("https://jitpack.io")
+    }
+}
+
+dependencies {
+    compileOnly("io.papermc.paper:paper-api:26.2.build.130-stable")
+    compileOnly("com.github.MilkBowl:VaultAPI:1.7.1") {
+        exclude(group = "org.bukkit", module = "bukkit")
+    }
+}
+
+java { toolchain.languageVersion.set(JavaLanguageVersion.of(25)) }
+tasks.withType<JavaCompile>().configureEach { options.encoding = "UTF-8" }
+tasks.jar { archiveBaseName.set("SpawnerStack") }

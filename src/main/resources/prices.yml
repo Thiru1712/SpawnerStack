@@ -1,0 +1,13 @@
+# SpawnerStack sell prices. Price is per individual item.
+# Change values here and use /sv reload.
+items:
+  ROTTEN_FLESH: 1.00
+  BONE: 1.50
+  ARROW: 2.00
+  STRING: 1.25
+  SPIDER_EYE: 1.56
+  BLAZE_ROD: 100.00
+  MAGMA_CREAM: 75.00
+  IRON_INGOT: 40.00
+  CARROT: 25.00
+  POTATO: 20.00

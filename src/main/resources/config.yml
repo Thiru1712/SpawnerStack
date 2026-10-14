@@ -1,0 +1,37 @@
+# SpawnerStack
+# Public plugin: edit these files; no Java changes required.
+production:
+  cooldown-seconds: 30
+  # Allowed range: 1-60 seconds. Default: 30 seconds.
+  max-offline-catchup-hours: 24
+  max-cycles-per-tick: 200
+  base-slots: 36
+  max-stack: 64
+  save-interval-seconds: 30
+  virtual-only: true
+
+breaking:
+  require-silk-touch: true
+  allowed-pickaxes: [IRON_PICKAXE, DIAMOND_PICKAXE, NETHERITE_PICKAXE]
+  message: "&cCannot break the spawner with this tool."
+
+ui:
+  title: "&8Spawner &7• {type} x{stack}"
+  storage-page-size: 45
+
+economy:
+  enabled: true
+  # Sell Loot uses the server economy exposed through Vault. SpawnerStack stores no player balances.
+
+# Production presets for the original seven vanilla loot profiles.
+# Only SpawnerStack items created with SpawnerStack data are managed; normal/generated vanilla spawners are left untouched.
+# minecraft:trial_spawner is always ignored.
+# Only the seven configured vanilla production types are supported.
+spawners:
+  ZOMBIE: { enabled: true }
+  SKELETON: { enabled: true }
+  SPIDER: { enabled: true }
+  CAVE_SPIDER: { enabled: true }
+  SILVERFISH: { enabled: true }
+  BLAZE: { enabled: true }
+  MAGMA_CUBE: { enabled: true }

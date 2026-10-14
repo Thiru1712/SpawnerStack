@@ -1,0 +1,15 @@
+name: SpawnerStack
+version: '1.2.0'
+main: com.spawnervault.core.SpawnerStackPlugin
+api-version: '26.2'
+authors: [ForgeLabs]
+description: Low-lag virtual vanilla spawner production, storage, stacking, and optional Vault economy integration.
+softdepend: [Vault]
+commands:
+  spawnerstack:
+    aliases: [svault, sv]
+    description: SpawnerStack administration
+    permission: spawnerstack.admin
+permissions:
+  spawnerstack.admin:
+    default: op
