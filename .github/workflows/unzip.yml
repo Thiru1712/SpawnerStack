@@ -1,7 +1,5 @@
 name: Unzip SpawnerStack
-
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   unzip:
@@ -17,6 +15,8 @@ jobs:
         run: |
           unzip -o SpawnerStack.zip
           rm SpawnerStack.zip
+          # Remove build.yml from the commit to prevent GitHub's permission block
+          rm -rf .github/workflows/build.yml
 
       - name: Commit and push changes
         run: |
@@ -25,3 +25,4 @@ jobs:
           git add -A
           git diff-index --quiet HEAD || git commit -m "Unpack SpawnerStack.zip"
           git push
+
